@@ -21,7 +21,7 @@ $(document).ready(function(){
 	async function addCharacters(){
 		for(i=0; i < characters.length; i++){
 			$(".character-container").append(characters[i].img);
-			await sleep(100);
+			await sleep(150);
 		}
 	}
 
@@ -39,28 +39,47 @@ $(document).ready(function(){
 	})
 
 	$(".btn-select-hero").on("click", async function(){
-		$(pendingChar.class).removeAttr("data-toggle");
-		$(pendingChar.class).removeAttr("data-target");
-		$(pendingChar.class).removeClass("fadeIn");
-		$(".hero-box").html(activeChar);
-		$(pendingChar.class).addClass("slideInUp");
-		$(this).css("display","none");
 		selectedHero = pendingChar;
+		$(".hero-panel-title").text(selectedHero.name);
+		$(".hero-panel").addClass("animated");
+		$(".hero-panel").addClass("fadeIn");
+		$(".hero-panel").css("display","unset");
+		await sleep(800);
+		$(selectedHero.class).removeAttr("data-toggle");
+		$(selectedHero.class).removeAttr("data-target");
+		$(selectedHero.class).removeClass("fadeIn");
+		$(".hero-box").html(activeChar);
+		$(selectedHero.class).css("margin","0px");
+		$(selectedHero.class).addClass("bounceInUp");
+		$(".hero-box").append("<div class='hero-hp-bar-container'><div class='hero-hp-bar'><p class='animated slideInLeft'>" + selectedHero.hp + "</p></div></div><br><br>" + "<p class='animated slideInLeft'>Attack Power: " + selectedHero.atkPower + "</p>" + "<p class='animated slideInLeft'>Counter Attack Power: " + selectedHero.cAtkPower + "</p>");
+		$(this).css("display","none");
+		
 
 		if(typeof selectedHero !== 'undefined' && typeof selectedEnemy !== 'undefined'){
+			$(".vs-image").addClass("animated");
+			await sleep(1000);
+			$(".vs-image").addClass("flip");
 			$(".vs-image").css("display","unset");
 		}
 
 	})
 
 	$(".btn-select-enemy").on("click", async function(){
-		$(pendingChar.class).removeAttr("data-toggle");
-		$(pendingChar.class).removeAttr("data-target");
-		$(pendingChar.class).removeClass("fadeIn");
-		$(".enemy-box").html(activeChar);
-		$(pendingChar.class).addClass("slideInUp");
-		$(this).css("display","none");
 		selectedEnemy = pendingChar;
+		$(".enemy-panel-title").text(selectedEnemy.name);
+		$(".enemy-panel").addClass("animated");
+		$(".enemy-panel").addClass("fadeIn");
+		$(".enemy-panel").css("display","unset");
+		await sleep(800);
+		$(selectedEnemy.class).removeAttr("data-toggle");
+		$(selectedEnemy.class).removeAttr("data-target");
+		$(selectedEnemy.class).removeClass("fadeIn");
+		$(".enemy-box").html(activeChar);
+		$(selectedEnemy.class).css("margin","0px");
+		$(selectedEnemy.class).addClass("bounceInUp");
+		$(".enemy-box").append("<div class='enemy-hp-bar-container'><div class='enemy-hp-bar'><p class='animated slideInLeft enemy-hp-text'>" + selectedEnemy.hp + "</p></div></div><br><br>" + "<p class='animated slideInLeft'>Attack Power: " + selectedEnemy.atkPower + "</p>" + "<p class='animated slideInLeft'>Counter Attack Power: " + selectedEnemy.cAtkPower + "</p>");
+		$(selectedEnemy.class).addClass("bounceInUp");
+		$(this).css("display","none");
 		if(typeof selectedHero !== 'undefined' && typeof selectedEnemy !== 'undefined'){
 			$(".vs-image").addClass("animated");
 			await sleep(1000);

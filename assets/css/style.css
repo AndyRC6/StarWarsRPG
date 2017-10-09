@@ -60,8 +60,45 @@ body{
 	border-color:black;
 }
 .hero-box, .enemy-box{
-	height:200px;
+	height:500px;
 }
 .vs-image{
 	display:none;
+}
+.hero-panel{
+	display:none;
+}
+.enemy-panel{
+	display:none;
+}
+.hero-panel-heading, .enemy-panel-heading{
+	background-color:#3D3C3C !important;
+}
+.enemy-hp-bar{
+	background-color:red;
+	border-radius:5px;
+	height:17px;
+	width:100%;
+}
+.enemy-hp-text{
+	position:relative;
+}
+.enemy-hp-bar-container{
+	width:121px;
+	text-align:center;
+	font-size:15px;
+}
+.hero-hp-bar{
+	background-color:green;
+	border-radius:5px;
+	height:17px;
+	width:100%;
+}
+.hero-hp-text{
+	position:relative;
+}
+.hero-hp-bar-container{
+	width:121px;
+	text-align:center;
+	font-size:15px;
 }
