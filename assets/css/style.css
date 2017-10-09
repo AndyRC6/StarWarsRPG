@@ -1,0 +1,60 @@
+body{
+	background-image: url("../images/stars.jpg");
+	font-family: 'Pathway Gothic One', sans-serif;
+	font-weight:bold;
+	color:#FFD700;
+}
+.panel{
+	border:none;
+}
+.panel-heading h2{
+	color:#FFD700;
+}
+.panel-heading{
+	border:none;
+}
+.panel-body{
+	border:none;
+}
+.char-icon{
+	border:solid;
+	border-color:#FFD700;
+	width:120px;
+	height:100px;
+	margin:10px;
+	transition:opacity 0.7s ease;
+}
+.char-icon:hover{
+	opacity:0.5;
+	cursor:pointer;
+}
+.char-icon-container{
+	display:inline-block;
+}
+.hero-selection-text{
+	text-align:center;
+}
+.panel-heading{
+	background-color:#343434 !important;
+}
+.panel-body{
+	background-color:#3D3C3C;
+}
+.btn-select-hero{
+	float:left !important;
+}
+.btn-select-enemy{
+	float:left;
+}
+.modal-header{
+	background-color:#343434;
+	border-color:black;
+}
+.modal-body{
+	background-color:#343434;
+	border-color:black;
+}
+.modal-footer{
+	background-color:#343434;
+	border-color:black;
+}
