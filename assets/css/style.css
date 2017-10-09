@@ -1,7 +1,8 @@
 body{
 	background-image: url("../images/stars.jpg");
 	font-family: 'Pathway Gothic One', sans-serif;
-	font-weight:bold;
+	font-size:18px;
+	/*font-weight:bold;*/
 	color:#FFD700;
 }
 .panel{
