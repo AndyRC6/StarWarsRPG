@@ -13,6 +13,8 @@ $(document).ready(function(){
 	var selectedHero;
 	var selectedEnemy;
 	var index;
+	var heroMaxHealth;
+	var enemyMaxHealth;
 
 	function sleep(ms) {
   		return new Promise(resolve => setTimeout(resolve, ms));
@@ -40,6 +42,7 @@ $(document).ready(function(){
 
 	$(".btn-select-hero").on("click", async function(){
 		selectedHero = pendingChar;
+		heroMaxHealth = selectedHero.hp;
 		$(".hero-panel-title").text(selectedHero.name);
 		$(".hero-panel").addClass("animated");
 		$(".hero-panel").addClass("fadeIn");
@@ -60,12 +63,14 @@ $(document).ready(function(){
 			await sleep(1000);
 			$(".vs-image").addClass("flip");
 			$(".vs-image").css("display","unset");
+			$(".attack-button").css("display","unset");
 		}
 
 	})
 
 	$(".btn-select-enemy").on("click", async function(){
 		selectedEnemy = pendingChar;
+		enemyMaxHealth = selectedEnemy.hp;
 		$(".enemy-panel-title").text(selectedEnemy.name);
 		$(".enemy-panel").addClass("animated");
 		$(".enemy-panel").addClass("fadeIn");
@@ -85,8 +90,22 @@ $(document).ready(function(){
 			await sleep(1000);
 			$(".vs-image").addClass("flip");
 			$(".vs-image").css("display","unset");
+			$(".attack-button").css("display","unset");
 
 		}
+
+	})
+
+	$(".attack-button").on("click", async function(){
+		var percentage;
+		selectedEnemy.hp = selectedEnemy.hp - selectedHero.atkPower;
+		if(selectedEnemy.hp < 0){
+			selectedEnemy.hp = 0;
+		}
+		$(".enemy-hp-bar").text(selectedEnemy.hp);
+		percentage = (selectedEnemy.hp / enemyMaxHealth) * 100;
+		percentage = percentage.toString() + "%";
+		$(".enemy-hp-bar").css("width", percentage);
 
 	})
 
