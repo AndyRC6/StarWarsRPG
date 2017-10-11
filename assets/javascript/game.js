@@ -22,20 +22,30 @@ $(document).ready(function(){
 		for(i = 0; i < characters.length; i++){
 			if(characters[i].alive === false){
 				deathCount = deathCount + 1;
-				alert(deathCount);
 			}
 		}
 		if(deathCount === characters.length - 1){
 			$(".attack-button").css("display","none");
+			$(".vs-image").css("display","none");
+			$(".enemy-box").empty();
+			$(".enemy-panel-title").text("");
+			$(".win-text").css("display","unset");
+			$(".restart-button").css("display","unset");
+		}else{
+			$(".enemy-box").empty();
+			$(".enemy-panel-title").text("Select a new Enemy");
+			$(".btn-select-enemy").css("display", "unset");
+			$(".attack-button").removeAttr("disabled");
 		}
-		$(".enemy-box").empty();
-		$(".enemy-panel-title").text("Select a new Enemy");
-		$(".btn-select-enemy").css("display", "unset");
-		$(".attack-button").removeAttr("disabled");
 	}
 
 	function playerDeath(){
-
+		$(".attack-button").css("display","none");
+		$(".vs-image").css("display","none");
+		$(".enemy-box").empty();
+		$(".enemy-panel-title").text("");
+		$(".lose-text").css("display","unset");
+		$(".restart-button").css("display","unset");
 	}
 
 	function sleep(ms) {
@@ -135,6 +145,8 @@ $(document).ready(function(){
 		enemyPercentage = (selectedEnemy.hp / enemyMaxHealth) * 100;
 		enemyPercentage = enemyPercentage.toString() + "%";
 		$(".enemy-hp-bar").css("width", enemyPercentage);
+		selectedHero.atkPower = selectedHero.atkPower + heroBaseAtk;
+		$(".atk-power-text").text("Attack Power: " + selectedHero.atkPower);
 		await sleep(1000);
 
 
@@ -142,21 +154,24 @@ $(document).ready(function(){
 		if(selectedHero.hp < 0){
 			selectedHero.hp = 0;
 		}
+		
 
 		if(selectedEnemy.hp > 0){
 			$(".hero-hp-text").text("hp: " + selectedHero.hp);
 			heroPercentage = (selectedHero.hp / heroMaxHealth) * 100;
 			heroPercentage = heroPercentage.toString() + "%";
 			$(".hero-hp-bar").css("width", heroPercentage);
-			selectedHero.atkPower = selectedHero.atkPower + heroBaseAtk;
-			$(".atk-power-text").text("Attack Power: " + selectedHero.atkPower);
+			
 		}
 		if(selectedHero.hp > 0 && selectedEnemy.hp > 0){
 			$(".attack-button").removeAttr("disabled");
 		}else if(selectedEnemy.hp === 0){
 			selectedEnemy.alive = false;
 			enemyDeath();
+		}else if(selectedHero.hp === 0){
+			playerDeath();
 		}
+		
 	})
 
 

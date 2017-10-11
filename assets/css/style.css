@@ -116,3 +116,14 @@ body{
 	position:relative;
 	margin-bottom:20px;
 }
+.restart-button{
+	width:100%;
+	display:none;
+}
+.win-text, .lose-text{
+	text-align:center;
+	display:none;
+}
+.middle-box{
+	text-align:center;
+}
