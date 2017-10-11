@@ -76,7 +76,6 @@ body{
 }
 .enemy-hp-bar{
 	background-color:red;
-	border-radius:5px;
 	height:17px;
 	width:100%;
 }
@@ -84,13 +83,13 @@ body{
 	position:relative;
 }
 .enemy-hp-bar-container{
+	border:solid;
+	border-width:1px;
 	width:121px;
-	text-align:center;
 	font-size:15px;
 }
 .hero-hp-bar{
 	background-color:green;
-	border-radius:5px;
 	height:17px;
 	width:100%;
 }
@@ -98,8 +97,9 @@ body{
 	position:relative;
 }
 .hero-hp-bar-container{
+	border:solid;
+	border-width:1px;
 	width:121px;
-	text-align:center;
 	font-size:15px;
 }
 .attack-button{
@@ -107,4 +107,12 @@ body{
 	width:100%;
 	margin-top:50px;
 	margin-bottom:50px;
+}
+.enemy-hp-text{
+	position:relative;
+	margin-bottom:2px;
+}
+.hero-hp-text{
+	position:relative;
+	margin-bottom:20px;
 }
