@@ -76,7 +76,7 @@ body{
 }
 .enemy-hp-bar{
 	background-color:red;
-	height:17px;
+	height:10px;
 	width:100%;
 }
 .enemy-hp-text{
@@ -90,7 +90,7 @@ body{
 }
 .hero-hp-bar{
 	background-color:green;
-	height:17px;
+	height:10px;
 	width:100%;
 }
 .hero-hp-text{

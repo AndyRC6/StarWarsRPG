@@ -145,18 +145,27 @@ $(document).ready(function(){
 		enemyPercentage = (selectedEnemy.hp / enemyMaxHealth) * 100;
 		enemyPercentage = enemyPercentage.toString() + "%";
 		$(".enemy-hp-bar").css("width", enemyPercentage);
-		selectedHero.atkPower = selectedHero.atkPower + heroBaseAtk;
+		if(selectedEnemy.alive === true){
+			selectedHero.atkPower = selectedHero.atkPower + heroBaseAtk;
+		}
+
+		
 		$(".atk-power-text").text("Attack Power: " + selectedHero.atkPower);
 		await sleep(1000);
 
 
-		selectedHero.hp = selectedHero.hp - selectedEnemy.cAtkPower;
+		
 		if(selectedHero.hp < 0){
 			selectedHero.hp = 0;
 		}
 		
 
 		if(selectedEnemy.hp > 0){
+			selectedHero.hp = selectedHero.hp - selectedEnemy.cAtkPower;
+
+			if(selectedHero.hp < 0){
+				selectedHero.hp = 0;
+			}
 			$(".hero-hp-text").text("hp: " + selectedHero.hp);
 			heroPercentage = (selectedHero.hp / heroMaxHealth) * 100;
 			heroPercentage = heroPercentage.toString() + "%";
@@ -172,6 +181,10 @@ $(document).ready(function(){
 			playerDeath();
 		}
 		
+	})
+
+	$(".restart-button").on("click", function(){
+		location.reload();
 	})
 
 
